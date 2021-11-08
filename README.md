@@ -16,25 +16,25 @@ Please edit the `config.json` file first. (Add Token Bot, Prefix, and Owner Bot 
 ## FAQ
 
 1. To get your [YouTube cookie](https://github.com/fent/node-ytdl-core/blob/997efdd5dd9063363f6ef668bb364e83970756e7/example/cookies.js#L6-L12).
-- navigate to YouTube in a web browser.
-- open up dev tools (opt+cmd+j on mac).
-- go to the network tab.
-- click on a request on the left.
-- scroll down to "Request Headers".
-- find the "cookie" header and copy its entire contents.
+- Navigate to YouTube in a web browser.
+- Open up dev tools (opt+cmd+j on mac).
+- Go to the network tab.
+- Click on a request on the left.
+- Scroll down to "Request Headers".
+- Find the "cookie" header and copy its entire contents.
 
 2. To get your Youtube Identity Token.
-- navigate to YouTube video's watch page in a web browser.
-- open up dev tools (opt+cmd+j on mac).
-- go to the source tab.
-- searching for "ID_TOKEN".
+- Navigate to YouTube video's watch page in a web browser.
+- Open up dev tools (opt+cmd+j on mac).
+- Go to the source tab.
+- Searching for "ID_TOKEN".
 
 3. To get your Spotify clientId and clientSecret.
-- navigate to [spotify developer page](https://developer.spotify.com/dashboard/applications).
+- Navigate to [spotify developer page](https://developer.spotify.com/dashboard/applications).
 - Please login to your spotify account if needed.
-- create an app.
-- go to the app that you have created.
-- there you will get clientId and clientSecret.
+- Create an app.
+- Go to the app that you have created.
+- There you will get clientId and clientSecret.
 
 ## Contributing
 
