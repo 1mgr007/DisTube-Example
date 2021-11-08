@@ -1,0 +1,51 @@
+{
+  "name": "distubeexample",
+  "version": "1.0.0",
+  "description": "This is a simple Distube example music bot.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "1mgr007",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.6.0",
+    "@discordjs/voice": "^0.7.2",
+    "@distube/spotify": "^1.0.0",
+    "ascii-table": "^0.0.9",
+    "chalk": "^4.1.2",
+    "common-tags": "^1.8.0",
+    "discord.js": "^13.3.1",
+    "distube": "^3.0.1",
+    "ffmpeg-static": "^4.4.0",
+    "fs": "^0.0.2",
+    "iso-language-converter": "^1.1.0",
+    "libsodium-wrappers": "^0.7.9",
+    "lyrics-finder": "^21.7.0",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2",
+    "node-superfetch": "^0.2.3",
+    "opusscript": "^0.0.8",
+    "systeminformation": "^5.9.9",
+    "utf-8-validate": "^5.0.7",
+    "zlib-sync": "^0.1.7"
+  },
+  "engines": {
+    "node": "17.x"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true,
+      "commonjs": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 12
+    },
+    "rules": {}
+  }
+}
