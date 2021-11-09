@@ -39,12 +39,18 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 - There you will get clientId and clientSecret.
 
 ## Free Discord Bot Hosting
+
 - [Heroku](https://heroku.com/)
 - [Replit](https://replit.com/)
 - [Glitch](https://glitch.com/)
 - [Azure](https://azure.microsoft.com/account/free) - Free Trial with a $200 credit for 30 days
 - [DigitalOcean](https://www.digitalocean.com/try/free-trial-offer) - Free Trial with a $100 credit for 60 days
 
+## For Help
+
+- My Discord Account: Panji Kusuma#7473
+- My Discord Server: [Gang Sebelah](https://discord.gg/gangsebelah) - This is a public discord server but you can find me there
+- Follow and Support Me: https://linktr.ee/1mgr007
 
 ## Contributing
 
