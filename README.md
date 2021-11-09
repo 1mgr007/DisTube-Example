@@ -11,7 +11,7 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 - [FFmpeg](https://www.ffmpeg.org/download.html) - `npm install ffmpeg-static`
 - [@discordjs/voice](https://github.com/discordjs/voice) - `npm install @discordjs/voice`
 - [sodium](https://www.npmjs.com/package/sodium) or [libsodium-wrappers](https://www.npmjs.com/package/libsodium-wrappers) - `npm install sodium` or `npm install libsodium-wrappers`
-- [python](https://www.python.org/) _(Optional - For [youtube-dl](http://ytdl-org.github.io/youtube-dl/) to support [700+ more sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html).)_
+- [Python](https://www.python.org/) _(Optional - For [youtube-dl](http://ytdl-org.github.io/youtube-dl/) to support [700+ more sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html).)_
 
 ## FAQ
 
