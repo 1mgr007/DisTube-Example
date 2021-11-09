@@ -16,7 +16,7 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 ## FAQ
 
 1. How do I get [YouTube cookie](https://github.com/fent/node-ytdl-core/blob/997efdd5dd9063363f6ef668bb364e83970756e7/example/cookies.js#L6-L12) ?
-- Navigate to YouTube in a web browser.
+- Navigate to [YouTube](https://www.youtube.com/) in a web browser.
 - Please login to your YouTube account if needed.
 - Open up dev tools (opt+cmd+j on mac).
 - Go to the network tab.
@@ -24,15 +24,15 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 - Scroll down to "Request Headers".
 - Find the "cookie" header and copy its entire contents.
 
-2. To get your Youtube Identity Token.
-- Navigate to YouTube video's watch page in a web browser.
+2. How do I get Youtube Identity Token ?
+- Navigate to [YouTube video's watch page](https://www.youtube.com/watch?v=5qap5aO4i9A) in a web browser.
 - Please login to your YouTube account if needed.
 - Open up dev tools (opt+cmd+j on mac).
 - Go to the source tab.
 - Searching for "ID_TOKEN".
 
-3. To get your Spotify clientId and clientSecret.
-- Navigate to [spotify developer page](https://developer.spotify.com/dashboard/applications).
+3. How do I get Spotify clientId and clientSecret ?
+- Navigate to [Spotify Developer Page](https://developer.spotify.com/dashboard/applications).
 - Please login to your spotify account if needed.
 - Create an app.
 - Go to the app that you have created.
