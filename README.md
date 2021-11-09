@@ -15,8 +15,9 @@ Please edit the `config.json` file first.
 
 ## FAQ
 
-1. To get your [YouTube cookie](https://github.com/fent/node-ytdl-core/blob/997efdd5dd9063363f6ef668bb364e83970756e7/example/cookies.js#L6-L12).
+1. How do I get [YouTube cookie](https://github.com/fent/node-ytdl-core/blob/997efdd5dd9063363f6ef668bb364e83970756e7/example/cookies.js#L6-L12) ?
 - Navigate to YouTube in a web browser.
+- Please login to your YouTube account if needed.
 - Open up dev tools (opt+cmd+j on mac).
 - Go to the network tab.
 - Click on a request on the left.
@@ -25,6 +26,7 @@ Please edit the `config.json` file first.
 
 2. To get your Youtube Identity Token.
 - Navigate to YouTube video's watch page in a web browser.
+- Please login to your YouTube account if needed.
 - Open up dev tools (opt+cmd+j on mac).
 - Go to the source tab.
 - Searching for "ID_TOKEN".
