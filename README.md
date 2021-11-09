@@ -2,7 +2,7 @@
 
 This is a simple [DisTube](https://distube.js.org/) example music bot.
 
-Please edit the `config.json` file first. (Add Token Bot, Prefix, and Owner Bot ID, youtubeCookie, youtubeIdentityToken, clientId, clientSecret, musicimg)
+Please edit the `config.json` file first.
 
 ## Requirement
 
@@ -35,6 +35,14 @@ Please edit the `config.json` file first. (Add Token Bot, Prefix, and Owner Bot 
 - Create an app.
 - Go to the app that you have created.
 - There you will get clientId and clientSecret.
+
+## Free Discord Bot Hosting
+- [Heroku](https://heroku.com/)
+- [Replit](https://replit.com/)
+- [Glitch](https://glitch.com/)
+- [Azure](https://azure.microsoft.com/account/free) - Free Trial with a $200 credit for 30 days
+- [DigitalOcean](https://www.digitalocean.com/try/free-trial-offer) - Free Trial with a $100 credit for 60 days
+
 
 ## Contributing
 
