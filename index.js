@@ -1,6 +1,4 @@
-/**
- * Module Imports
- */
+// Module Imports
 const { Client } = require("discord.js");
 const { readdirSync } = require("fs");
 const config = require("./config.json");
