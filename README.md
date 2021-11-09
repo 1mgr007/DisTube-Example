@@ -2,7 +2,7 @@
 
 This is a simple [DisTube](https://distube.js.org/) example music bot.
 
-Please edit the `config.json` file first.
+Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 
 ## Requirement
 
