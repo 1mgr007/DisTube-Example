@@ -33,7 +33,7 @@ module.exports = {
 
         message.client.distube.shuffle(message)
             .then(queue => {
-                embed.setDescription(`🔀 | **Shuffle** queue.`);
+                embed.setDescription(`🔀 | Successfully **Shuffled** the queue.`);
                 message.channel.send({ embeds: [embed] });
             })
             .catch(error => {

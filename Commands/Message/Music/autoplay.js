@@ -31,12 +31,12 @@ module.exports = {
         if (!queue.autoplay) {
             message.client.distube.toggleAutoplay(message);
 
-            embed.setDescription(`🔄 | Activate **autoplay** mode.`);
+            embed.setDescription(`🔄 | Successfully activated **autoplay** mode.`);
             message.channel.send({ embeds: [embed] });
         } else {
             message.client.distube.toggleAutoplay(message);
 
-            embed.setDescription(`🔄 | Disable **autoplay** mode.`);
+            embed.setDescription(`🔄 | Successfully deactivated **autoplay** mode.`);
             message.channel.send({ embeds: [embed] });
         }
     }

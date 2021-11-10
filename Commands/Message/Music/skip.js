@@ -34,7 +34,7 @@ module.exports = {
         if (queue.songs.length === 1) {
             message.client.distube.stop(message)
                 .then(song => {
-                    embed.setDescription(`${message.client.emoji.skip} **Skip** a song.`);
+                    embed.setDescription(`⏩ | **Skip** a song.`);
                     message.channel.send({ embeds: [embed] });
                 })
                 .catch(error => {
@@ -43,7 +43,7 @@ module.exports = {
         } else {
             message.client.distube.skip(message)
                 .then(song => {
-                    embed.setDescription(`${message.client.emoji.skip} **Skip** a song.`);
+                    embed.setDescription(`⏩ | Successfully **Skipped** a song.`);
                     message.channel.send({ embeds: [embed] });
                 })
                 .catch(error => {

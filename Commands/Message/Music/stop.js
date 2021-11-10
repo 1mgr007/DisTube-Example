@@ -33,7 +33,7 @@ module.exports = {
 
         message.client.distube.stop(message);
 
-        embed.setDescription(`${message.client.emoji.stop} **Stopped** the music.`);
+        embed.setDescription(`⏹️ | Successfully **Stopped** the music.`);
         message.channel.send({ embeds: [embed] });
 
     }

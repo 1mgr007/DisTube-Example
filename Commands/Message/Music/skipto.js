@@ -36,7 +36,7 @@ module.exports = {
 
         message.client.distube.jump(message, parseInt(args[0]))
             .then(queue => {
-                embed.setDescription(`${message.client.emoji.skipto} **Skip** ${args[0]} songs.`);
+                embed.setDescription(`⏩ | Successfully **Skipped** ${args[0]} songs.`);
                 message.channel.send({ embeds: [embed] });
             })
             .catch(error => {

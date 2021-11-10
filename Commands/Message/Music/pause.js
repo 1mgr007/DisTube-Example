@@ -35,7 +35,7 @@ module.exports = {
 
 		message.client.distube.pause(message);
 
-        embed.setDescription(`⏸️ | **Pause** a song.`);
+        embed.setDescription(`⏸️ | Successfully **Paused** a song.`);
 		message.channel.send({ embeds: [embed] });
     }
 }

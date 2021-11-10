@@ -33,7 +33,7 @@ module.exports = {
 
         let volume = parseInt(args[0]);
         if (!volume) {
-            embed.setDescription(`${message.client.emoji.volume} Current **volume** : \`${queue.volume}\`%`);
+            embed.setDescription(`🔊 | Current **Volume** : \`${queue.volume}\`%`);
             return message.channel.send({ embeds: [embed] });
         }
 
@@ -44,7 +44,7 @@ module.exports = {
 
         message.client.distube.setVolume(message, volume);
 
-        embed.setDescription(`${message.client.emoji.volume} **Volume** set to \`${volume}\`%`);
+        embed.setDescription(`🔊 | Successfully changed the **Volume** to \`${volume}\`%`);
         message.channel.send({ embeds: [embed] });
 
     }

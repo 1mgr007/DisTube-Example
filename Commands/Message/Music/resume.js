@@ -35,7 +35,7 @@ module.exports = {
 		
 		message.client.distube.resume(message);
 
-		embed.setDescription(`▶️ | **Resume** a song.`);
+		embed.setDescription(`▶️ | Successfully **Resumed** a song.`);
 		message.channel.send({ embeds: [embed] });
 		
     }
