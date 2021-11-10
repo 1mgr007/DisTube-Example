@@ -1,6 +1,7 @@
 ## Discord Music Bot
 
 This is a simple [DisTube](https://distube.js.org/) example music bot. ([DisTube Support Server](https://discord.gg/feaDd9h))
+
 Dependencies maybe outdated. You should update them yourself!
 
 Please edit the `./config.json` and `./Events/Client/ready.js` file first.
