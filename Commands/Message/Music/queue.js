@@ -14,6 +14,7 @@ module.exports = {
     owner: false,
     async execute(client, message, args) {
         const queue = message.client.distube.getQueue(message);
+        if (!queue) return message.channel.send(`❌ | There is no music playing!`);
 
         let arrays = queue.songs.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``);
 
