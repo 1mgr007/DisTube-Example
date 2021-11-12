@@ -23,7 +23,7 @@ module.exports = {
         var current = queue.currentTime * 1000;
         var size = 30;
         var line = '─';
-        var slider = message.client.emoji.note;
+        var slider = "🎵";
 
         let embed = new MessageEmbed()
             .setTitle('🎵 Now Playing')
