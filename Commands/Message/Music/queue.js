@@ -25,14 +25,14 @@ module.exports = {
             .setColor(message.client.color)
             .setAuthor(`🎶 Queue`)
             .addfield("🎵 Now Playing", `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
-            .addfield("Total Song", `${arrays.length} Songs`)
-            .addfield("Total Duration", `${queue.formattedDuration}`)
             .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
 
         if (arrays.length === 0) {
             embed.description(`\`No song in queue\``)
             message.channel.send(embed);
         } else {
+            embed.addfield("Total Song", `${arrays.length} Songs`);
+            embed.addfield("Total Duration", `${queue.formattedDuration}`);
             message.client.pagination.button(message, arrays, embed)
         }
     }
