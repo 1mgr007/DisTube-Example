@@ -18,7 +18,8 @@ module.exports = {
 
         const currentSong = queue.songs[0];
 
-        let arrays = queue.songs.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``);
+        let filter = queue.songs.filter(song => song !== currentSong);
+        let arrays = filter.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``);
 
         let embed = new MessageEmbed()
             .setColor(message.client.color)
@@ -28,6 +29,11 @@ module.exports = {
             .addfield("Total Duration", `${queue.formattedDuration}`)
             .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
 
-        message.client.pagination.button(message, arrays, embed)
+        if (arrays.length === 0) {
+            embed.description(`\`No song in queue\``)
+            message.channel.send(embed);
+        } else {
+            message.client.pagination.button(message, arrays, embed)
+        }
     }
 }
