@@ -16,11 +16,16 @@ module.exports = {
         const queue = message.client.distube.getQueue(message);
         if (!queue) return message.channel.send(`❌ | There is no music playing!`);
 
+        const currentSong = queue.songs[0];
+
         let arrays = queue.songs.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``);
 
         let embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setAuthor(`Queue: [${arrays.length} Songs]`)
+            .setAuthor(`🎶 Queue`)
+            .addfield("🎵 Now Playing", `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
+            .addfield("Total Song", `${arrays.length} Songs`)
+            .addfield("Total Duration", `${queue.formattedDuration}`)
             .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
 
         message.client.pagination.button(message, arrays, embed)
