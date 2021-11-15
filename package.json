@@ -25,6 +25,8 @@
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "node-superfetch": "^0.2.3",
+    "opusscript": "^0.0.8",
+    "sodium": "^3.0.2",
     "systeminformation": "^5.9.13",
     "utf-8-validate": "^5.0.7",
     "zlib-sync": "^0.1.7"
