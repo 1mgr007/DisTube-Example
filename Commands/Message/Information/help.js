@@ -26,7 +26,7 @@ module.exports = {
             }
 
             const infoFilter1 = message.client.categories.filter(cat => cat !== "Owner");
-            const info = infoFilter1.map(cat => stripIndents`${message.client.emoji.folder}**${cat[0].toUpperCase() + cat.slice(1)}**\n${commands(cat)}`).reduce((string, category) => string + "\n\n" + category);
+            const info = infoFilter1.map(cat => stripIndents`📁 **${cat[0].toUpperCase() + cat.slice(1)}**\n${commands(cat)}`).reduce((string, category) => string + "\n\n" + category);
     
             embed.setTitle(`ℹ️ Command List`)
             embed.setDescription(`● To get help on a specific command type \`${message.client.prefix}help <command>\`!\n\n${info}`);
