@@ -28,8 +28,8 @@ module.exports = {
             .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
 
         if (arrays.length === 0) {
-            embed.setDescription(`\`No song in queue\``)
-            message.channel.send(embed);
+            embed.setDescription(`\`No song in queue\``);
+            message.channel.send({ embeds: [embed] });
         } else {
             embed.addField("Total Song", `${arrays.length} Songs`);
             embed.addField("Total Duration", `${queue.formattedDuration}`);
