@@ -13,7 +13,11 @@ module.exports = {
     botPermissions: [ "SEND_MESSAGES" ],
     owner: false,
     async execute(client, message, args) {
-        const embed = message.client.embed.embed1(message);
+        const embed = new MessageEmbed()
+            .setColor(message.client.color)
+            .setAuthor(message.client.user.username, message.client.user.displayAvatarURL())
+            .setThumbnail(message.client.user.displayAvatarURL())
+            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
 
         if (!args[0]) {
             const commands = (category) => {
