@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 
 module.exports = {
