@@ -32,35 +32,38 @@ module.exports = {
 
         const input = args[0];
 
-        const disable = 0;
-        const song = 1;
-        const queues = 2;
-
         if (!input) {
-            message.client.distube.setRepeatMode(message, song);
+            if (queue.repeatMode === 0) {
+                message.client.distube.setRepeatMode(message, 1);
 
-            embed.setDescription(`🔁 | **Looping** a song.`);
-            message.channel.send({ embeds: [embed] });
+                embed.setDescription(`🔁 | **Looping** a song.`);
+                message.channel.send({ embeds: [embed] });
+            } else {
+                message.client.distube.setRepeatMode(message, 0);
+
+                embed.setDescription(`🔁 | Stop **looping** song.`);
+                message.channel.send({ embeds: [embed] });
+            }
         } else if (input === "lagu" || input === "song") {
-            message.client.distube.setRepeatMode(message, song);
+            message.client.distube.setRepeatMode(message, 1);
 
             embed.setDescription(`🔁 | **Looping** a song.`);
             message.channel.send({ embeds: [embed] });
         } else if (input === "queue" || input === "all") {
-            message.client.distube.setRepeatMode(message, queues);
+            message.client.distube.setRepeatMode(message, 2);
 
             embed.setDescription(`🔁 | **Looping** all the queue.`);
             message.channel.send({ embeds: [embed] });
         } else if (input === "off") {
-            message.client.distube.setRepeatMode(message, disable);
+            message.client.distube.setRepeatMode(message, 0);
 
             embed.setDescription(`🔁 | Stop **looping** song.`);
             message.channel.send({ embeds: [embed] });
         } else {
             embederror.setDescription(`❌ | Please enter valid arguments!
-Loop Song: ${message.client.prefix}loop song
+Loop Song: ${message.client.prefix}loop
 Loop Queue: ${message.client.prefix}loop queue
-Turn OFF Loop: ${message.client.prefix}loop loop`);
+Turn OFF Loop: ${message.client.prefix}loop off`);
             message.channel.send({ embeds: [embederror] });
         }
     }

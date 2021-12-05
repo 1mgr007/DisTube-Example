@@ -52,6 +52,6 @@ module.exports = async function(client, message) {
         message.channel.send(`❌ | There was an error executing that command.\nI have contacted the owner of the bot to fix it immediately.`);
 
         let owner = message.client.users.cache.get(client.owner[0]);
-        owner.send(`${message.client.emoji.warn} There was an error executing command **${command.name}**.\nAn error encountered: \n${error}\n<#${message.channel.id}>`);
+        owner.send(`❌ | There was an error executing command **${command.name}**.\nAn error encountered: \n${error}\n<#${message.channel.id}>`);
     }
 }
