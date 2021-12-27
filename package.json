@@ -12,6 +12,7 @@
     "@discordjs/opus": "^0.7.0",
     "@discordjs/voice": "^0.7.5",
     "@distube/spotify": "^1.0.0",
+    "@distube/ytdl-core": "^4.9.4",
     "ascii-table": "^0.0.9",
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
