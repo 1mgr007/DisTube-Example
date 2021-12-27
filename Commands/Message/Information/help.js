@@ -16,7 +16,7 @@ module.exports = {
     async execute(client, message, args) {
         const embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setAuthor(message.client.user.username, message.client.user.displayAvatarURL())
+            .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }) })
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
 

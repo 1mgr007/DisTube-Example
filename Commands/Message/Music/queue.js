@@ -23,7 +23,7 @@ module.exports = {
 
         let embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setAuthor(`🎶 Queue`)
+            .setAuthor({ name: `🎶 Queue` })
             .addField("🎵 Now Playing", `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
             .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
 

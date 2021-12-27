@@ -15,8 +15,8 @@
     "ascii-table": "^0.0.9",
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
-    "discord.js": "^13.3.1",
-    "distube": "^3.0.3",
+    "discord.js": "^13.4.0",
+    "distube": "^3.0.4",
     "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.2",
     "iso-language-converter": "^1.1.0",
@@ -27,7 +27,7 @@
     "node-superfetch": "^0.2.3",
     "opusscript": "^0.0.8",
     "sodium": "^3.0.2",
-    "systeminformation": "^5.9.15",
+    "systeminformation": "^5.9.17",
     "utf-8-validate": "^5.0.7",
     "zlib-sync": "^0.1.7"
   },
@@ -35,7 +35,7 @@
     "node": "17.x"
   },
   "devDependencies": {
-    "eslint": "^8.4.0"
+    "eslint": "^8.5.0"
   },
   "eslintConfig": {
     "env": {

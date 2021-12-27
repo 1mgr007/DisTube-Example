@@ -29,7 +29,7 @@ module.exports = {
             let split = await Util.splitMessage(lyrics, { maxLength: 2048 });
 
             const embed = new MessageEmbed()
-                .setAuthor(`Lyrics`)
+                .setAuthor({ name: `Lyrics` })
                 .setColor(message.client.color)
                 .setTitle(`${song}`)
                 .setDescription(split.join(""))
