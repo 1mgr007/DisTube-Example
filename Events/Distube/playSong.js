@@ -8,7 +8,7 @@ module.exports = async (client, queue, song) => {
             .setColor(client.color)
             .setDescription(`🎶 | Start playing playlist \n[${song.playlist.name}](${song.playlist.url}) \`[${song.playlist.songs.length} songs]\`\n\n🎵 | Start playing \n[${song.name}](${song.url}) - \`[${song.formattedDuration}]\``)
             .setThumbnail(song.thumbnail)
-            .setFooter(`Request by ${song.user.tag}`, song.user.displayAvatarURL());
+            .setFooter({ text: `Request by ${song.user.tag}`, iconURL: song.user.displayAvatarURL() });
         queue.textChannel.send({ embeds: [thing] }).then(message => setTimeout(() => { message.delete() }, duration));
 
     } else {
@@ -16,7 +16,7 @@ module.exports = async (client, queue, song) => {
             .setColor(client.color)
             .setDescription(`🎵 | Start playing \n[${song.name}](${song.url}) - \`[${song.formattedDuration}]\``)
             .setThumbnail(song.thumbnail)
-            .setFooter(`Request by ${song.user.tag}`, song.user.displayAvatarURL());
+            .setFooter({ text: `Request by ${song.user.tag}`, iconURL: song.user.displayAvatarURL() });
         queue.textChannel.send({ embeds: [thing] }).then(message => setTimeout(() => { message.delete() }, duration));
     }
 

@@ -26,10 +26,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL());
-
-        const embederror = new MessageEmbed()
-            .setColor("#ff0000");
+            .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
         let target = parseInt(args[0]);
         if (isNaN(target)) return message.channel.send(`❌ | Please enter a valid number!`)

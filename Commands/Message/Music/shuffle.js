@@ -26,10 +26,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL());
-
-        const embederror = new MessageEmbed()
-            .setColor("#ff0000");
+            .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
         message.client.distube.shuffle(message)
             .then(queue => {

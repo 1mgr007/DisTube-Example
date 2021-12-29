@@ -28,9 +28,6 @@ module.exports = {
             .setColor(message.client.color)
             .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL());
 
-        const embederror = new MessageEmbed()
-            .setColor("#ff0000");
-
         message.client.distube.stop(message);
 
         embed.setDescription(`⏹️ | Successfully **Stopped** the music.`);

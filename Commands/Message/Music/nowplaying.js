@@ -32,7 +32,7 @@ module.exports = {
             .setColor(message.client.color)
             .addField("\u200b", message.client.progressbar.progressbar(total, current, size, line, slider))
             .addField("\u200b", `\`${message.client.convert.convertTime(current)} / ${message.client.convert.convertTime(total)}\``)
-            .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
+            .setFooter({ text: `Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, iconURL: message.author.displayAvatarURL() });
         message.channel.send({ embeds: [embed] });
 
     }

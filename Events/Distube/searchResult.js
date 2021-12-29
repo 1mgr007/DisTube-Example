@@ -8,7 +8,7 @@ module.exports = async (client, message, result, query) => {
     let embed = new MessageEmbed()
         .setColor(client.color)
         .setDescription(`🔎 | **Choose an option from below**\n${result.map(song => `**${++i}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``).join("\n")}`)
-        .setFooter(`Enter anything else or wait 60 seconds to cancel`);
+        .setFooter({ text: `Enter anything else or wait 60 seconds to cancel` });
     message.channel.send({ embeds: [embed] });
 
 }

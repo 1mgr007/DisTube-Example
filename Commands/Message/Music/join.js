@@ -23,7 +23,7 @@ module.exports = {
 
 		const embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL());
+            .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
 		message.client.distube.voices.join(memberVC)
 			.then(voice => {

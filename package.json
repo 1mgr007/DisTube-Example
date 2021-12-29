@@ -14,7 +14,7 @@
     "@distube/spotify": "^1.0.0",
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
-    "discord.js": "^13.4.0",
+    "discord.js": "^13.5.0",
     "distube": "^3.0.5",
     "ffmpeg-static": "^4.4.0",
     "iso-language-converter": "^1.1.0",

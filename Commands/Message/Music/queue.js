@@ -25,7 +25,7 @@ module.exports = {
             .setColor(message.client.color)
             .setAuthor({ name: `🎶 Queue` })
             .addField("🎵 Now Playing", `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
-            .setFooter(`Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, message.author.displayAvatarURL());
+            .setFooter({ text: `Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, iconURL: message.author.displayAvatarURL() });
 
         if (arrays.length === 0) {
             embed.setDescription(`\`No song in queue\``);

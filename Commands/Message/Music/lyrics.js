@@ -33,7 +33,7 @@ module.exports = {
                 .setColor(message.client.color)
                 .setTitle(`${song}`)
                 .setDescription(split.join(""))
-                .setFooter(`Request by ${message.author.tag}`, message.author.displayAvatarURL());
+                .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
             message.channel.send({ embeds: [embed] });
         } catch (error) {
             console.error(error);
