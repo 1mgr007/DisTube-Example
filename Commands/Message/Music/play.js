@@ -16,6 +16,11 @@ module.exports = {
         const clientVC = message.guild.me.voice.channel;
         if (clientVC && clientVC !== memberVC) return message.channel.send(`❌ | You must be in the same channel as ${message.client.user}!`);
 
-        message.client.distube.play(message, args.join(' '));
+        message.client.distube.play(memberVC, args.join(" "), {
+            member: message.member,
+            textChannel: message.channel,
+            message
+        });
+        
     }
 }
