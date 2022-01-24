@@ -41,6 +41,9 @@ client.distube = distube;
 client.prefix = config.Prefix;
 client.owner = config.OwnerId;
 client.color = config.Color;
+
+const musicimg = "https://cdn.jsdelivr.net/gh/skick1234/MaBu-CDN@4.8.4/DisTube/img/banner.png";
+if (!config.MusicImg) client.musicimg = musicimg;
 client.musicimg = config.MusicImg;
 
 client.logger = require('./Utils/logger');
