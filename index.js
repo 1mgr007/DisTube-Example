@@ -4,6 +4,7 @@ const { readdirSync } = require("fs");
 const config = require("./config.json");
 const DisTube = require('distube');
 const { SpotifyPlugin } = require("@distube/spotify");
+const { SoundCloudPlugin } = require("@distube/soundcloud")
 
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
@@ -18,14 +19,14 @@ const distube = new DisTube.DisTube(client, {
 	emptyCooldown: 0,
 	leaveOnFinish: false,
 	leaveOnStop: false,
-	plugins: [new SpotifyPlugin({ 
-        parallel: true, 
-        emitEventsAfterFetching: false,
-        api: { 
-            clientId: config.clientId, 
-            clientSecret: config.clientSecret, 
-        }
-    })],
+	plugins: [
+        new SpotifyPlugin({ 
+            parallel: true, 
+            emitEventsAfterFetching: true,
+            api: { clientId: config.clientId, clientSecret: config.clientSecret }
+        }),
+        new SoundCloudPlugin()
+    ],
     youtubeCookie: config.youtubeCookie,
     youtubeIdentityToken: config.youtubeIdentityToken,
     ytdlOptions: {

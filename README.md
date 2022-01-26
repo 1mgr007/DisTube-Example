@@ -40,6 +40,18 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 
 4. More on [DisTube Support Server](https://discord.gg/feaDd9h).
 
+### Config Information
+
+- Token = Secret Token Bot.
+- Prefix = Bot Prefix.
+- OwnerId = UserId of the Bot Owner.
+- Color = Embed Color.
+- youtubeCookie = YouTube Cookie.
+- youtubeIdentityToken = Youtube Identity Token.
+- clientId = Spotify clientId.
+- clientSecret = Spotify clientSecret.
+- MusicImg = Embed Image (optional).
+
 ### Free Discord Bot Hosting
 
 - [Heroku](https://heroku.com/)
