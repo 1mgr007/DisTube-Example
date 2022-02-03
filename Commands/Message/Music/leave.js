@@ -15,12 +15,12 @@ module.exports = {
     async execute(client, message, args) {
 
         const memberVC = message.member.voice.channel;
-        if (!memberVC) return message.channel.send(`❌ | You must be in a voice channel!`);
+        if (!memberVC) return message.reply(`❌ | You must be in a voice channel!`);
 
         const clientVC = message.guild.me.voice.channel;
-        if (!clientVC) return message.channel.send(`❌ | I'm not on any voice channel!`);
+        if (!clientVC) return message.reply(`❌ | I'm not on any voice channel!`);
 
-        if (memberVC !== clientVC) return message.channel.send(`❌ | You must be in the same channel as ${message.client.user}!`);
+        if (memberVC !== clientVC) return message.reply(`❌ | You must be in the same channel as ${message.client.user}!`);
 
 		const embed = new MessageEmbed()
             .setColor(message.client.color)

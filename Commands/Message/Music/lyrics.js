@@ -20,11 +20,11 @@ module.exports = {
 
         if (!song && currentSong) song = currentSong.name;
 
-        if (!song && !currentSong) return message.channel.send({ content: "❌ | Please enter the title of the song!" });
+        if (!song && !currentSong) return message.reply(`❌ | Please enter the title of the song!`);
 
         try {
             let lyrics = await lyricsFinder(song, "");
-            if (!lyrics) return message.channel.send({ content: "❌ | No lyrics found!" });
+            if (!lyrics) return message.reply(`❌ | No lyrics found!`);
 
             let split = await Util.splitMessage(lyrics, { maxLength: 2048 });
 
