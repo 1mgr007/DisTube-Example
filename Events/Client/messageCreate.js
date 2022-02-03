@@ -7,7 +7,15 @@ module.exports = async function(client, message) {
     let PREFIX = message.client.prefix;
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    if (message.content.match(new RegExp(`^<@!?${message.client.user.id}>( |)$`))) return message.channel.send(`Hello **${message.author.tag}**, my prefix is **${PREFIX}**.\nUse **${PREFIX}help** to get the list of the commands!`);
+    const embed = new MessageEmbed()
+        .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL() })
+        .setColor(message.client.color)
+        .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
+
+    if (message.content.match(new RegExp(`^<@!?${message.client.user.id}>( |)$`))) {
+        embed.setDescription(`Hello **${message.author.tag}**, my prefix is **${PREFIX}**.\nUse **${PREFIX}help** to get the list of the commands!`);
+        return message.reply({ embeds: [embed] });
+    }
 
     const prefixRegex = new RegExp(`^(<@!?${message.client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
@@ -34,12 +42,12 @@ module.exports = async function(client, message) {
         const embederror = new MessageEmbed()
             .setColor("#ff0000")
             .setDescription(reply);
-        return message.channel.send({ embeds: [embederror] });
+        return message.reply({ embeds: [embederror] });
     }
 
-    if (command.memberPermissions && !message.member.permissions.has(command.memberPermissions)) return message.channel.send(`❌ | You don't have permission to run this command!`);
+    if (command.memberPermissions && !message.member.permissions.has(command.memberPermissions)) return message.reply(`❌ | You don't have permission to run this command!`);
 
-    if (command.botPermissions && !message.guild.me.permissions.has(command.botPermissions)) return message.channel.send(`❌ | I don't have permission to run this command!`);
+    if (command.botPermissions && !message.guild.me.permissions.has(command.botPermissions)) return message.reply(`❌ | I don't have permission to run this command!`);
 
     if (command.owner && !message.client.owner.includes(message.author.id)) return;
 
@@ -49,7 +57,7 @@ module.exports = async function(client, message) {
         console.error(error);
         message.client.logger.log(`Error Execute Commands at ${command.name} | ` + error, "error");
 
-        message.channel.send(`❌ | There was an error executing that command.\nI have contacted the owner of the bot to fix it immediately.`);
+        message.reply(`❌ | There was an error executing that command.\nI have contacted the owner of the bot to fix it immediately.`);
 
         let owner = message.client.users.cache.get(client.owner[0]);
         owner.send(`❌ | There was an error executing command **${command.name}**.\nAn error encountered: \n${error}\n<#${message.channel.id}>`);
