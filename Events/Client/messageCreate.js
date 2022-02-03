@@ -10,6 +10,7 @@ module.exports = async function(client, message) {
     const embed = new MessageEmbed()
         .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL() })
         .setColor(message.client.color)
+        .setThumbnail(message.client.user.displayAvatarURL())
         .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
     if (message.content.match(new RegExp(`^<@!?${message.client.user.id}>( |)$`))) {
