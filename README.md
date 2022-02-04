@@ -65,13 +65,18 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 
 - My Discord Account: Panji Kusuma#7473
 - My Discord Server: [Gang Sebelah](https://discord.gg/gangsebelah) - This is a public discord server but you can find me there.
-- Follow and Support Me: https://linktr.ee/1mgr007
+- Follow and Support Me: https://linktr.ee/1mgr007asd
+- Example Bot: [ZER0 DAY](https://discord.com/api/oauth2/authorize?client_id=621396927933579284&permissions=8&scope=bot%20applications.commands)
 
 ### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+
+
+
 
 ### License
 
