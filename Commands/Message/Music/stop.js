@@ -14,15 +14,15 @@ module.exports = {
     owner: false,
     async execute(client, message, args) {
         const memberVC = message.member.voice.channel;
-        if (!memberVC) return message.reply(`❌ | You must be in a voice channel!`);
+        if (!memberVC) return message.reply(`${message.client.emoji.error} | You must be in a voice channel!`);
 
         const clientVC = message.guild.me.voice.channel;
-        if (!clientVC) return message.reply(`❌ | I'm not on any voice channel!`);
+        if (!clientVC) return message.reply(`${message.client.emoji.error} | I'm not on any voice channel!`);
 
-        if (memberVC !== clientVC) return message.reply(`❌ | You must be in the same channel as ${message.client.user}!`);
+        if (memberVC !== clientVC) return message.reply(`${message.client.emoji.error} | You must be in the same channel as ${message.client.user}!`);
 
         const queue = message.client.distube.getQueue(message);
-        if (!queue) return message.reply(`❌ | There is no music playing!`);
+        if (!queue) return message.reply(`${message.client.emoji.error} | There is no music playing!`);
 
         const embed = new MessageEmbed()
             .setColor(message.client.color)
@@ -30,7 +30,7 @@ module.exports = {
 
         message.client.distube.stop(message);
 
-        embed.setDescription(`⏹️ | Successfully **Stopped** the music.`);
+        embed.setDescription(`${message.client.emoji.stop} | Successfully **Stopped** the music.`);
         message.channel.send({ embeds: [embed] });
 
     }

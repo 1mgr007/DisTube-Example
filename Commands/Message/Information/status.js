@@ -23,7 +23,7 @@ module.exports = {
             .setColor(message.client.color)
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
-            .setTitle(`ℹ️ Status`)
+            .setTitle(`${message.client.emoji.info} Status`)
             .setDescription(`**= STATISTICS =**
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
 **• Channels** : ${message.client.channels.cache.size.toLocaleString()}

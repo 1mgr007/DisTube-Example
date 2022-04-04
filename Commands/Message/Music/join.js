@@ -17,9 +17,9 @@ module.exports = {
 		const memberVC = message.member.voice.channel;
         const clientVC = message.guild.me.voice.channel;
 
-		if (!memberVC) return message.reply(`❌ | You must be in a voice channel!`);
-		if (clientVC && clientVC === memberVC) return message.reply(`❌ | I'm already on your voice channel!`);
-		if (clientVC && clientVC !== memberVC) return message.reply(`❌ | You must be in the same channel as ${message.client.user}!`);
+		if (!memberVC) return message.reply(`${message.client.emoji.error} | You must be in a voice channel!`);
+		if (clientVC && clientVC === memberVC) return message.reply(`${message.client.emoji.error} | I'm already on your voice channel!`);
+		if (clientVC && clientVC !== memberVC) return message.reply(`${message.client.emoji.error} | You must be in the same channel as ${message.client.user}!`);
 
 		const embed = new MessageEmbed()
             .setColor(message.client.color)
@@ -27,12 +27,12 @@ module.exports = {
 
 		message.client.distube.voices.join(memberVC)
 			.then(voice => {
-				embed.setDescription(`✔️ | Successfully **Join** the voice channel.`);
+				embed.setDescription(`${message.client.emoji.success} | Successfully **Join** the voice channel.`);
 				message.channel.send({ embeds: [embed] });
 			})
 			.catch(error => {
 				console.error(error);
-				return message.reply(`❌ | An error occurred while trying to join the voice channel.\nTry using the **Play** command!`);
+				return message.reply(`${message.client.emoji.error} | An error occurred while trying to join the voice channel.\nTry using the **Play** command!`);
 			});
 
     }

@@ -15,7 +15,7 @@ module.exports = async function(client, message) {
 
     if (message.content.match(new RegExp(`^<@!?${message.client.user.id}>( |)$`))) {
         embed.setDescription(`Hello **${message.author.tag}**, my prefix is **${PREFIX}**.\nUse **${PREFIX}help** to get the list of the commands!`);
-        return message.reply({ embeds: [embed] });
+        return message.channel.send({ embeds: [embed] });
     }
 
     const prefixRegex = new RegExp(`^(<@!?${message.client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
@@ -43,12 +43,12 @@ module.exports = async function(client, message) {
         const embederror = new MessageEmbed()
             .setColor("#ff0000")
             .setDescription(reply);
-        return message.reply({ embeds: [embederror] });
+        return message.channel.send({ embeds: [embederror] });
     }
 
-    if (command.memberPermissions && !message.member.permissions.has(command.memberPermissions)) return message.reply(`❌ | You don't have permission to run this command!`);
+    if (command.memberPermissions && !message.member.permissions.has(command.memberPermissions)) return message.channel.send(`${message.client.emoji.error} | You don't have permission to run this command!`);
 
-    if (command.botPermissions && !message.guild.me.permissions.has(command.botPermissions)) return message.reply(`❌ | I don't have permission to run this command!`);
+    if (command.botPermissions && !message.guild.me.permissions.has(command.botPermissions)) return message.channel.send(`${message.client.emoji.error} | I don't have permission to run this command!`);
 
     if (command.owner && !message.client.owner.includes(message.author.id)) return;
 
@@ -58,9 +58,9 @@ module.exports = async function(client, message) {
         console.error(error);
         message.client.logger.log(`Error Execute Commands at ${command.name} | ` + error, "error");
 
-        message.reply(`❌ | There was an error executing that command.\nI have contacted the owner of the bot to fix it immediately.`);
+        message.channel.send(`${message.client.emoji.error} | There was an error executing that command.\nI have contacted the owner of the bot to fix it immediately.`);
 
         let owner = message.client.users.cache.get(client.owner[0]);
-        owner.send(`❌ | There was an error executing command **${command.name}**.\nAn error encountered: \n${error}\n<#${message.channel.id}>`);
+        owner.send(`${message.client.emoji.error} | There was an error executing command **${command.name}**.\nAn error encountered: \n${error}\n<#${message.channel.id}>`);
     }
 }

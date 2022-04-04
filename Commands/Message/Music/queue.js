@@ -14,7 +14,7 @@ module.exports = {
     owner: false,
     async execute(client, message, args) {
         const queue = message.client.distube.getQueue(message);
-        if (!queue) return message.reply(`❌ | There is no music playing!`);
+        if (!queue) return message.reply(`${message.client.emoji.error} | There is no music playing!`);
 
         const currentSong = queue.songs[0];
 
@@ -23,8 +23,8 @@ module.exports = {
 
         let embed = new MessageEmbed()
             .setColor(message.client.color)
-            .setAuthor({ name: `🎶 Queue` })
-            .addField("🎵 Now Playing", `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
+            .setAuthor({ name: `${message.client.emoji.queue} Queue` })
+            .addField(`${message.client.emoji.music} Now Playing`, `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
             .setFooter({ text: `Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, iconURL: message.author.displayAvatarURL() });
 
         if (arrays.length === 0) {

@@ -20,11 +20,11 @@ module.exports = {
 
         if (!song && currentSong) song = currentSong.name;
 
-        if (!song && !currentSong) return message.reply(`❌ | Please enter the title of the song!`);
+        if (!song && !currentSong) return message.reply(`${message.client.emoji.error} | Please enter the title of the song!`);
 
         try {
             let lyrics = await lyricsFinder(song, "");
-            if (!lyrics) return message.reply(`❌ | No lyrics found!`);
+            if (!lyrics) return message.reply(`${message.client.emoji.error} | No lyrics found!`);
 
             let split = await Util.splitMessage(lyrics, { maxLength: 2048 });
 
@@ -37,7 +37,7 @@ module.exports = {
             message.channel.send({ embeds: [embed] });
         } catch (error) {
             console.error(error);
-            return message.channel.send("❌ | An error occurred while searching for song lyrics."); 
+            return message.channel.send("${message.client.emoji.error} | An error occurred while searching for song lyrics."); 
         }
     }
 }

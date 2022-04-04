@@ -14,7 +14,7 @@ module.exports = {
     owner: false,
     async execute(client, message, args) {
         const queue = message.client.distube.getQueue(message);
-        if (!queue) return message.reply(`❌ | There is no music playing!`);
+        if (!queue) return message.reply(`${message.client.emoji.error} | There is no music playing!`);
 
         const currentSong = queue.songs[0];
 
@@ -23,10 +23,10 @@ module.exports = {
         var current = queue.currentTime * 1000;
         var size = 30;
         var line = '─';
-        var slider = "🎵";
+        var slider = message.client.emoji.note;
 
         let embed = new MessageEmbed()
-            .setTitle('🎵 Now Playing')
+            .setTitle(`${message.client.emoji.music} Now Playing`)
             .setDescription(`[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
             .setThumbnail(currentSong.thumbnail)
             .setColor(message.client.color)

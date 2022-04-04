@@ -18,7 +18,7 @@ module.exports = {
 
         try {
             const code = args.join(" ");
-            if (!code) return message.channel.send(`❌ | Please include the code.`);
+            if (!code) return message.channel.send(`${message.client.emoji.error} | Please include the code.`);
             let evaled;
 
             // This method is to prevent someone that you trust, open the secret shit here.
