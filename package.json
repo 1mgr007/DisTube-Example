@@ -1,6 +1,6 @@
 {
 	"name": "distubeexample",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"description": "This is a simple Distube example music bot.",
 	"main": "index.js",
 	"scripts": {
@@ -11,37 +11,36 @@
 	"license": "ISC",
 	"dependencies": {
 		"@discordjs/opus": "^0.7.0",
-		"@discordjs/voice": "^0.8.0",
+		"@discordjs/voice": "^0.9.0",
 		"@distube/soundcloud": "^1.1.0",
 		"@distube/spotify": "^1.2.1",
 		"@distube/yt-dlp": "^1.0.2",
-		"@distube/ytdl-core": "^4.11.1",
+		"@distube/ytdl-core": "^4.11.3",
 		"bufferutil": "^4.0.6",
-		"chalk": "^5.0.1",
+		"chalk": "^4.1.2",
 		"common-tags": "^1.8.2",
-		"discord.js": "^13.6.0",
-		"distube": "^3.3.3",
+		"discord.js": "^13.7.0",
+		"distube": "^3.3.4",
 		"erlpack": "github:discord/erlpack",
 		"ffmpeg-static": "^5.0.0",
 		"fs": "^0.0.1-security",
 		"iso-language-converter": "^1.1.0",
-		"libsodium-wrappers": "^0.7.10",
 		"lyrics-finder": "^21.7.0",
-		"moment": "^2.29.2",
+		"moment": "^2.29.3",
 		"moment-duration-format": "^2.3.2",
 		"ms": "^2.1.3",
 		"node-superfetch": "^0.2.3",
 		"os": "^0.1.2",
-		"systeminformation": "^5.11.9",
+		"sodium": "^3.0.2",
+		"systeminformation": "^5.11.15",
 		"utf-8-validate": "^5.0.9",
 		"zlib-sync": "^0.1.7"
 	},
 	"devDependencies": {
-		"eslint": "^8.12.0"
+		"eslint": "^8.16.0"
 	},
 	"engines": {
-		"node": ">=16.6.0",
-		"npm": ">=7.0.0"
+		"node": "17.x"
 	},
 	"eslintConfig": {
 		"extends": "eslint:recommended",

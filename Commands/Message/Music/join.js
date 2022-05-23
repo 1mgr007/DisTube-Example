@@ -27,7 +27,7 @@ module.exports = {
 
 		message.client.distube.voices.join(memberVC)
 			.then(voice => {
-				embed.setDescription(`${message.client.emoji.success} | Successfully **Join** the voice channel.`);
+				embed.setDescription(`${message.client.emoji.join} | Successfully **Join** the voice channel.`);
 				message.channel.send({ embeds: [embed] });
 			})
 			.catch(error => {

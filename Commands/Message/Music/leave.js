@@ -32,12 +32,12 @@ module.exports = {
             message.client.distube.stop(message);
             message.client.distube.voices.leave(message.guild);
 
-            embed.setDescription(`${message.client.emoji.success} | Successfully **Leave** the voice channel.`);
+            embed.setDescription(`${message.client.emoji.leave} | Successfully **Leave** the voice channel.`);
 			message.channel.send({ embeds: [embed] });
         } else {
             message.client.distube.voices.leave(message.guild);
 
-            embed.setDescription(`${message.client.emoji.success} | Successfully **Leave** the voice channel.`);
+            embed.setDescription(`${message.client.emoji.leave} | Successfully **Leave** the voice channel.`);
 			message.channel.send({ embeds: [embed] });
         }
 

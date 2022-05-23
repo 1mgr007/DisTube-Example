@@ -39,7 +39,6 @@ const distube = new DisTube.DisTube(client, {
 });
 
 client.distube = distube;
-
 client.prefix = config.Prefix;
 client.owner = config.OwnerId;
 client.color = config.Color;
