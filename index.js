@@ -5,6 +5,7 @@ const config = require("./config.json");
 const DisTube = require('distube');
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { YtDlpPlugin } = require("@distube/yt-dlp");
 const https = require('https-proxy-agent');
 
 const proxy = 'http://123.123.123.123:8080';
@@ -30,7 +31,8 @@ const distube = new DisTube.DisTube(client, {
             emitEventsAfterFetching: true,
             api: { clientId: config.clientId, clientSecret: config.clientSecret }
         }),
-        new SoundCloudPlugin()
+        new SoundCloudPlugin(),
+        new YtDlpPlugin()
     ],
     youtubeCookie: config.youtubeCookie,
     ytdlOptions: {
