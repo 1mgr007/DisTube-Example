@@ -5,6 +5,10 @@ const config = require("./config.json");
 const DisTube = require('distube');
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
+const https = require('https-proxy-agent');
+
+const proxy = 'http://123.123.123.123:8080';
+const agent = https(proxy);
 
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
@@ -16,9 +20,10 @@ const distube = new DisTube.DisTube(client, {
 	searchSongs: 0,
 	searchCooldown: 30,
 	leaveOnEmpty: true,
-	emptyCooldown: 0,
+	emptyCooldown: 25,
 	leaveOnFinish: false,
 	leaveOnStop: false,
+	nsfw: true,
 	plugins: [
         new SpotifyPlugin({ 
             parallel: true, 
@@ -28,14 +33,18 @@ const distube = new DisTube.DisTube(client, {
         new SoundCloudPlugin()
     ],
     youtubeCookie: config.youtubeCookie,
-    youtubeIdentityToken: config.youtubeIdentityToken,
     ytdlOptions: {
-        highWaterMark: 1 << 24,
-        quality: 'highestaudio'
+        requestOptions: { agent },
+        highWaterMark: 1024 * 1024 * 64,
+        quality: "highestaudio",
+        format: "audioonly",
+        liveBuffer: 60000,
+        dlChunkSize: 1024 * 1024 * 4,
     },
     emitAddListWhenCreatingQueue: true,
     emitAddSongWhenCreatingQueue: false,
-    youtubeDL: false
+    youtubeDL: true,
+    updateYouTubeDL: true,
 });
 
 client.distube = distube;

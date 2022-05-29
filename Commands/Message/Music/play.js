@@ -16,7 +16,7 @@ module.exports = {
         const clientVC = message.guild.me.voice.channel;
         if (clientVC && clientVC !== memberVC) return message.reply(`${message.client.emoji.error} | You must be in the same channel as ${message.client.user}!`);
 
-        message.client.distube.play(memberVC, args.join(" "), {
+        await message.client.distube.play(memberVC, args.join(" "), {
             member: message.member,
             textChannel: message.channel,
             message

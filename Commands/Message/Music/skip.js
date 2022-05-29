@@ -28,24 +28,39 @@ module.exports = {
             .setColor(message.client.color)
             .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
-        if (queue.songs.length === 1) {
-            message.client.distube.stop(message)
-                .then(song => {
-                    embed.setDescription(`${message.client.emoji.skip} | **Skip** a song.`);
-                    message.channel.send({ embeds: [embed] });
-                })
-                .catch(error => {
-                    return message.channel.send(`${message.client.emoji.error} | An error occurred while skip the song.`); 
-                });
-        } else {
-            message.client.distube.skip(message)
-                .then(song => {
-                    embed.setDescription(`${message.client.emoji.skip} | Successfully **Skipped** a song.`);
-                    message.channel.send({ embeds: [embed] });
-                })
-                .catch(error => {
-                    return message.channel.send(`${message.client.emoji.error} | An error occurred while shuffle  the queue.`); 
-                });
-        }
+		if (queue.autoplay) {
+			await message.client.distube.addRelatedSong(queue)
+			.then(song => {
+                message.client.distube.skip(message)
+					.then(song => {
+						embed.setDescription(`${message.client.emoji.skip} | Successfully **Skipped** a song.`);
+						message.channel.send({ embeds: [embed] });
+					})
+					.catch(error => {
+						return message.channel.send(`${message.client.emoji.error} | An error occurred while shuffle  the queue.`); 
+					});
+            })
+		} else {
+			if (queue.songs.length === 1) {
+				message.client.distube.stop(message)
+					.then(song => {
+						embed.setDescription(`${message.client.emoji.skip} | **Skip** a song.`);
+						message.channel.send({ embeds: [embed] });
+					})
+					.catch(error => {
+						return message.channel.send(`${message.client.emoji.error} | An error occurred while skip the song.`); 
+					});
+			} else {
+				message.client.distube.skip(message)
+					.then(song => {
+						embed.setDescription(`${message.client.emoji.skip} | Successfully **Skipped** a song.`);
+						message.channel.send({ embeds: [embed] });
+					})
+					.catch(error => {
+						return message.channel.send(`${message.client.emoji.error} | An error occurred while shuffle  the queue.`); 
+					});
+			}
+		}
+        
     }
 }
