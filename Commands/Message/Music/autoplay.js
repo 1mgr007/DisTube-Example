@@ -29,12 +29,12 @@ module.exports = {
                 .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
         if (!queue.autoplay) {
-            message.client.distube.toggleAutoplay(message);
+            message.client.distube.toggleAutoplay(queue);
 
             embed.setDescription(`${message.client.emoji.autoplay} | Successfully activated **autoplay** mode.`);
             message.channel.send({ embeds: [embed] });
         } else {
-            message.client.distube.toggleAutoplay(message);
+            message.client.distube.toggleAutoplay(queue);
 
             embed.setDescription(`${message.client.emoji.autoplay} | Successfully deactivated **autoplay** mode.`);
             message.channel.send({ embeds: [embed] });
