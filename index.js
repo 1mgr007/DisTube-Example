@@ -45,8 +45,8 @@ const distube = new DisTube.DisTube(client, {
     },
     emitAddListWhenCreatingQueue: true,
     emitAddSongWhenCreatingQueue: false,
-    youtubeDL: true,
-    updateYouTubeDL: true,
+    youtubeDL: false,
+    updateYouTubeDL: false,
 });
 
 client.distube = distube;
