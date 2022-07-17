@@ -1,5 +1,5 @@
 // Module Imports
-const { Client } = require("discord.js");
+const { Client, Intents } = require("discord.js");
 const { readdirSync } = require("fs");
 const config = require("./config.json");
 const DisTube = require('distube');
@@ -14,7 +14,7 @@ const agent = https(proxy);
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
     partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
-    intents: 32767
+    intents: new Intents(32767)
 });
 
 const distube = new DisTube.DisTube(client, {
@@ -32,7 +32,7 @@ const distube = new DisTube.DisTube(client, {
             api: { clientId: config.clientId, clientSecret: config.clientSecret }
         }),
         new SoundCloudPlugin(),
-        new YtDlpPlugin()
+        new YtDlpPlugin({ update: true })
     ],
     youtubeCookie: config.youtubeCookie,
     ytdlOptions: {
@@ -47,6 +47,7 @@ const distube = new DisTube.DisTube(client, {
     emitAddSongWhenCreatingQueue: false,
     youtubeDL: false,
     updateYouTubeDL: false,
+    emitNewSongOnly: true
 });
 
 client.distube = distube;
