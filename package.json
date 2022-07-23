@@ -41,7 +41,8 @@
 		"eslint": "^8.20.0"
 	},
 	"engines": {
-		"node": "17.x"
+		"node": ">=16.6.0",
+		"npm": ">=7.0.0"
 	},
 	"eslintConfig": {
 		"extends": "eslint:recommended",
