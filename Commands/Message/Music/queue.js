@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "queue",
@@ -21,7 +21,7 @@ module.exports = {
         let filter = queue.songs.filter(song => song !== currentSong);
         let arrays = filter.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``);
 
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setAuthor({ name: `${message.client.emoji.queue} Queue` })
             .addField(`${message.client.emoji.music} Now Playing`, `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)

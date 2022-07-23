@@ -1,30 +1,31 @@
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+/* eslint-disable no-unused-vars */
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require("discord.js");
 
 module.exports = async (client, queue, song) => {
 
     let duration = song.duration * 1000;
 
-    const pauseButton = new MessageButton()
-		.setStyle('SUCCESS')
+    const pauseButton = new ButtonBuilder()
+		.setStyle('Success')
         .setLabel('Pause & Resume')
         .setCustomId('pauseId');
-    const skipButton = new MessageButton()
-		.setStyle('PRIMARY')
+    const skipButton = new ButtonBuilder()
+		.setStyle('Primary')
         .setLabel('Skip')
         .setCustomId('skipId');
-    const stopButton = new MessageButton()
-		.setStyle('DANGER')
+    const stopButton = new ButtonBuilder()
+		.setStyle('Danger')
         .setLabel('Stop')
         .setCustomId('stopId');
-    const queueButton = new MessageButton()
-		.setStyle('SECONDARY')
+    const queueButton = new ButtonBuilder()
+		.setStyle('Secondary')
         .setLabel('Show Queue')
         .setCustomId('queueId');
 
-    const row = new MessageActionRow()
+    const row = new ActionRowBuilder()
 		.addComponents([ pauseButton, skipButton, stopButton, queueButton ]);
 
-    let thing = new MessageEmbed()
+    let thing = new EmbedBuilder()
         .setColor(client.color)
         .setThumbnail(song.thumbnail)
         .setFooter({ text: `Request by ${song.user.tag}`, iconURL: song.user.displayAvatarURL() });
@@ -60,14 +61,16 @@ module.exports = async (client, queue, song) => {
 
 
 async function playButton(queue, duration, embed, song) {
-    const filter = i => queue.voiceChannel.members.has(i.user.id);
-
-    const collector = embed.createMessageComponentCollector({ filter, time: duration });
+    const collector = embed.createMessageComponentCollector({ 
+        filter: (interaction) => queue.voiceChannel.members.has(interaction.user.id),
+        time: duration,
+        componentType: 2
+    });
 
     collector.on('collect', async i => {
         if (queue.songs[0] !== song) return i.message.delete();
 
-        let embeds = new MessageEmbed()
+        let embeds = new EmbedBuilder()
             .setColor(i.client.color)
             .setFooter(`Request by ${i.user.tag}`, i.user.displayAvatarURL());
         
@@ -101,10 +104,10 @@ async function playButton(queue, duration, embed, song) {
         } else if (i.customId === 'queueId') {
             const arrays = queue.songs.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``); 
 
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setColor("BLACK")
                 .setTitle(`${i.client.emoji.queue} Queue:`)
-                .setFooter(`Request by ${i.user.tag} • ${client.music.status(queue)}`,i.user.displayAvatarURL());
+                .setFooter(`Request by ${i.user.tag} • ${i.client.music.status(queue)}`,i.user.displayAvatarURL());
 
             const footer = "songs";
             const timeout = 120000;
@@ -118,14 +121,14 @@ async function button(i, arrays, embed, footer, timeout) {
 
     const backId = 'back';
     const forwardId = 'forward';
-    const backButton = new MessageButton({
-        style: 'SECONDARY',
+    const backButton = new ButtonBuilder({
+        style: 'Secondary',
         label: 'Back',
         emoji: '⏪',
         customId: backId
     });
-    const forwardButton = new MessageButton({
-        style: 'SECONDARY',
+    const forwardButton = new ButtonBuilder({
+        style: 'Secondary',
         label: 'Forward',
         emoji: '⏩',
         customId: forwardId
@@ -142,7 +145,7 @@ async function button(i, arrays, embed, footer, timeout) {
 
     const canFitOnOnePage = array.length <= 10
 
-    const row1 = new MessageActionRow()
+    const row1 = new ActionRowBuilder()
         .addComponents([ forwardButton ]);
 
     const embeds = await generateEmbed(0)
@@ -164,7 +167,7 @@ async function button(i, arrays, embed, footer, timeout) {
     collector.on('collect', async interaction => {
         interaction.customId === backId ? (currentIndex -= 10) : (currentIndex += 10)
 
-        const row2 = new MessageActionRow()
+        const row2 = new ActionRowBuilder()
             .addComponents([ ...(currentIndex ? [backButton] : []), ...(currentIndex + 10 < array.length ? [forwardButton] : []) ]);
 
         const embed = await generateEmbed(currentIndex);

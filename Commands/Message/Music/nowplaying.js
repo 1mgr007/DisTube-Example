@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "nowplaying",
@@ -25,7 +25,7 @@ module.exports = {
         var line = '─';
         var slider = message.client.emoji.note;
 
-        let embed = new MessageEmbed()
+        let embed = new EmbedBuilder()
             .setTitle(`${message.client.emoji.music} Now Playing`)
             .setDescription(`[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
             .setThumbnail(currentSong.thumbnail)

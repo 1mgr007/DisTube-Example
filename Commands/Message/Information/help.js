@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { stripIndents } = require("common-tags");
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
     botPermissions: [ "SEND_MESSAGES" ],
     owner: false,
     async execute(client, message, args) {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }) })
             .setThumbnail(message.client.user.displayAvatarURL())
@@ -69,10 +69,12 @@ module.exports = {
 
             embed.setTitle(`${message.client.prefix}${name}`)
             embed.setDescription(`\`\`\`${description}\`\`\``)
-            embed.addField('Usage', `${usage}`)
-            embed.addField('Examples', `${example}`)
-            embed.addField('Aliases', `__***${aliases}***__`)
-            embed.addField('Member Permission', `\`${memberPermissions}\``);
+            embed.addFields([ 
+                { name: `Usage`, value: `${usage}` }, 
+                { name: `Examples`, value: `${example}` }, 
+                { name: `Aliases`, value: `__***${aliases}***__` }, 
+                { name: `Member Permission`, value: `\`${memberPermissions}\`` }, 
+            ]);
             message.channel.send({ embeds: [embed] });
         }
     }

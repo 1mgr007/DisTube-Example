@@ -1,11 +1,11 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = async (client, channel, err) => {
 
     console.log(err);
 
-    let embed = new MessageEmbed()
-        .setColor("RED")
+    let embed = new EmbedBuilder()
+        .setColor("#ff0000")
         .setDescription(`${client.emoji.error} | An error encountered: \n${err}`);
     channel.send({ embeds: [embed] });
 

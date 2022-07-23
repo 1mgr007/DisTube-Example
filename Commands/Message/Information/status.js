@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed, version } = require("discord.js");
+const { EmbedBuilder, version } = require("discord.js");
 const moment = require("moment");
 require("moment-duration-format");
 const os = require('os')
@@ -19,7 +19,7 @@ module.exports = {
     async execute(client, message, args) {
         const duration1 = moment.duration(message.client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
         const cpu = await si.cpu();
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setThumbnail(message.client.user.displayAvatarURL())
             .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())

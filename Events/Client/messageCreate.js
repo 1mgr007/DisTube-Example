@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = async function(client, message) {
     if (message.author.bot) return;
@@ -7,7 +7,7 @@ module.exports = async function(client, message) {
     let PREFIX = message.client.prefix;
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
         .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL() })
         .setColor(message.client.color)
         .setThumbnail(message.client.user.displayAvatarURL())
@@ -40,7 +40,7 @@ module.exports = async function(client, message) {
             });
         }
 
-        const embederror = new MessageEmbed()
+        const embederror = new EmbedBuilder()
             .setColor("#ff0000")
             .setDescription(reply);
         return message.channel.send({ embeds: [embederror] });
@@ -48,7 +48,7 @@ module.exports = async function(client, message) {
 
     if (command.memberPermissions && !message.member.permissions.has(command.memberPermissions)) return message.channel.send(`${message.client.emoji.error} | You don't have permission to run this command!`);
 
-    if (command.botPermissions && !message.guild.me.permissions.has(command.botPermissions)) return message.channel.send(`${message.client.emoji.error} | I don't have permission to run this command!`);
+    if (command.botPermissions && !message.guild.members.me.permissions.has(command.botPermissions)) return message.channel.send(`${message.client.emoji.error} | I don't have permission to run this command!`);
 
     if (command.owner && !message.client.owner.includes(message.author.id)) return;
 

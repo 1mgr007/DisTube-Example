@@ -7,12 +7,12 @@ module.exports = {
         const backId = "back";
         const forwardId = "forward";
         const backButton = new MessageButton()
-            .setStyle("SECONDARY")
+            .setStyle("Secondary")
             .setLabel("Back")
             .setEmoji("⏪")
             .setCustomId(backId);
         const forwardButton = new MessageButton()
-            .setStyle("SECONDARY")
+            .setStyle("Secondary")
             .setLabel("Forward")
             .setEmoji("⏩")
             .setCustomId(forwardId);
@@ -40,8 +40,9 @@ module.exports = {
         if (canFitOnOnePage) return;
 
         const collector = embedMessage.createMessageComponentCollector({
-            filter: ({ user }) => user.id === message.author.id,
+            filter: (interaction) => interaction.user.id === message.author.id,
             time: timeout,
+			componentType: 2
         });
 
         let currentIndex = 0;

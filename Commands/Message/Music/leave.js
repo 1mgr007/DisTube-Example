@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "leave",
@@ -17,12 +17,12 @@ module.exports = {
         const memberVC = message.member.voice.channel;
         if (!memberVC) return message.reply(`${message.client.emoji.error} | You must be in a voice channel!`);
 
-        const clientVC = message.guild.me.voice.channel;
+        const clientVC = message.guild.members.me.voice.channel;
         if (!clientVC) return message.reply(`${message.client.emoji.error} | I'm not on any voice channel!`);
 
         if (memberVC !== clientVC) return message.reply(`${message.client.emoji.error} | You must be in the same channel as ${message.client.user}!`);
 
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 

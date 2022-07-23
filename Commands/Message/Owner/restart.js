@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "restart",
@@ -13,7 +13,7 @@ module.exports = {
     botPermissions: [ "SEND_MESSAGES" ],
     owner: true,
     async execute(client, message, args) {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor("BLACK")
             .setDescription(`Restarting bot.`);
         message.channel.send({ embeds: [embed] }).then(message => {

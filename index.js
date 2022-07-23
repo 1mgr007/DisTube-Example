@@ -1,20 +1,28 @@
 // Module Imports
-const { Client, Intents } = require("discord.js");
+const { Client, Partials, IntentsBitField, Options } = require("discord.js");
 const { readdirSync } = require("fs");
 const config = require("./config.json");
 const DisTube = require('distube');
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
-const https = require('https-proxy-agent');
-
-const proxy = 'http://123.123.123.123:8080';
-const agent = https(proxy);
 
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
-    intents: new Intents(32767)
+    partials: [
+        Partials.User,
+        Partials.Channel,
+        Partials.GuildMember,
+        Partials.Message,
+        Partials.Reaction,
+        Partials.GuildScheduledEvent,
+        Partials.ThreadMember
+    ],
+    intents: new IntentsBitField(131071),
+    restTimeOffset: 0,
+    restWsBridgetimeout: 100,
+    shards: 'auto',
+    makeCache: Options.cacheEverything()
 });
 
 const distube = new DisTube.DisTube(client, {
@@ -36,7 +44,6 @@ const distube = new DisTube.DisTube(client, {
     ],
     youtubeCookie: config.youtubeCookie,
     ytdlOptions: {
-        requestOptions: { agent },
         highWaterMark: 1024 * 1024 * 64,
         quality: "highestaudio",
         format: "audioonly",
@@ -45,8 +52,6 @@ const distube = new DisTube.DisTube(client, {
     },
     emitAddListWhenCreatingQueue: true,
     emitAddSongWhenCreatingQueue: false,
-    youtubeDL: false,
-    updateYouTubeDL: false,
     emitNewSongOnly: true
 });
 

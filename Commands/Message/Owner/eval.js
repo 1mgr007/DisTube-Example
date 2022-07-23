@@ -1,24 +1,30 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 const { post } = require("node-superfetch");
 
 module.exports = {
     name: "eval",
-    category: "owner",
+    category: "Owner",
     aliases: [],
     description: "Eval Code",
     args: true,
     usage: [],
     examples: [],
     memberPermissions: [],
-    botPermissions: [ "SEND_MESSAGES" ],
+    botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
     owner: true,
     async execute(client, message, args) {
-        const embed = new MessageEmbed()
-            .addField("Input", "```js\n" + args.join(" ") + "```");
+        const embederror = new EmbedBuilder()
+            .setColor("#FF0000");
+
+        const embed = new EmbedBuilder()
+            .addFields([ { name: "📥 Input", value: `\`\`\`js\n${args.join(" ")}\`\`\`` } ]);
 
         try {
             const code = args.join(" ");
-            if (!code) return message.channel.send(`${message.client.emoji.error} | Please include the code.`);
+            if (!code) {
+                embederror.setDescription(`<a:no:893059567427133451> | Please include the code.`);
+                return message.channel.send({ embeds: [embederror] });
+            }
             let evaled;
 
             // This method is to prevent someone that you trust, open the secret shit here.
@@ -34,10 +40,12 @@ module.exports = {
             if (output.length > 1024) {
                 // If the output was more than 1024 characters, we're gonna export them into the hastebin.
                 const { body } = await post("https://hastebin.com/documents").send(output);
-                embed.addField("Output", `https://hastebin.com/${body.key}.js`).setColor(message.client.color);
+                embed.addFields([ { name: "📤 Output", value: `https://hastebin.com/${body.key}.js` } ]);
+                embed.setColor(message.client.color);
                 // Sometimes, the body.key will turn into undefined. It might be the API is under maintenance or broken.
             } else {
-                embed.addField("Output", "```js\n" + output + "```").setColor(message.client.color)
+                embed.addFields([ { name: "📤 Output", value: `\`\`\`js\n${output}\`\`\`` } ]);
+                embed.setColor(message.client.color);
             }
 
             message.channel.send({ embeds: [embed] });
@@ -47,9 +55,11 @@ module.exports = {
             if (err.length > 1024) {
                 // Do the same like above if the error output was more than 1024 characters.
                 const { body } = await post("https://hastebin.com/documents").send(err);
-                embed.addField("Output", `https://hastebin.com/${body.key}.js`).setColor("RED");
+                embed.addFields([ { name: "📤 Output", value: `https://hastebin.com/${body.key}.js` } ]);
+                embed.setColor("#FF0000");
             } else {
-                embed.addField("Output", "```js\n" + err + "```").setColor("RED");
+                embed.addFields([ { name: "📤 Output", value: `\`\`\`js\n${err}\`\`\`` } ]);
+                embed.setColor("#FF0000");
             }
 
             message.channel.send({ embeds: [embed] });

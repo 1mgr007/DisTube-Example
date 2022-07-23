@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "filter",
@@ -15,7 +15,7 @@ module.exports = {
         const memberVC = message.member.voice.channel;
         if (!memberVC) return message.reply(`${message.client.emoji.error} | You must be in a voice channel!`);
 
-        const clientVC = message.guild.me.voice.channel;
+        const clientVC = message.guild.members.me.voice.channel;
         if (!clientVC) return message.reply(`${message.client.emoji.error} | I'm not on any voice channel!`);
 
         if (memberVC !== clientVC) return message.reply(`${message.client.emoji.error} | You must be in the same channel as ${message.client.user}!`);
@@ -23,11 +23,11 @@ module.exports = {
         const queue = message.client.distube.getQueue(message);
         if (!queue) return message.reply(`${message.client.emoji.error} | There is no music playing!`);
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
-        const embederror = new MessageEmbed()
+        const embederror = new EmbedBuilder()
             .setColor("#ff0000");
 
         let filter = ['3d', 'bassboost', 'echo', 'flanger', 'gate', 'haas', 'karaoke', 'nightcore', 'reverse', 'vaporwave', 'mcompand', 'phaser', 'tremolo', 'surround', 'earwax'];

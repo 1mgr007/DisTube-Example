@@ -1,4 +1,4 @@
-const { MessageEmbed, Util } = require("discord.js");
+const { EmbedBuilder, Util } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
 
             let split = await Util.splitMessage(lyrics, { maxLength: 2048 });
 
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setAuthor({ name: `Lyrics` })
                 .setColor(message.client.color)
                 .setTitle(`${song}`)

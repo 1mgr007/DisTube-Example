@@ -1,8 +1,8 @@
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = async (client, queue) => {
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
         .setColor(client.color)
         .setDescription(`${client.emoji.leave} | **Leave** the voice channel.\nThank you for using ${client.user.username}!`)
         .setImage(client.musicimg)

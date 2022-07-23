@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: "ping",
@@ -13,7 +13,7 @@ module.exports = {
     botPermissions: [ "SEND_MESSAGES" ],
     owner: false,
     async execute(client, message, args) {
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setDescription(`Ping : **${message.client.ws.ping}**ms`);
         message.channel.send({ embeds: [embed] });
