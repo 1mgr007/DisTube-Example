@@ -9,20 +9,9 @@ const { YtDlpPlugin } = require("@distube/yt-dlp");
 
 const client = new Client({
     allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
-    partials: [
-        Partials.User,
-        Partials.Channel,
-        Partials.GuildMember,
-        Partials.Message,
-        Partials.Reaction,
-        Partials.GuildScheduledEvent,
-        Partials.ThreadMember
-    ],
+    partials: [ Partials.User, Partials.Channel, Partials.GuildMember, Partials.Message, Partials.Reaction, Partials.GuildScheduledEvent, Partials.ThreadMember ],
     intents: new IntentsBitField(131071),
-    restTimeOffset: 0,
-    restWsBridgetimeout: 100,
-    shards: 'auto',
-    makeCache: Options.cacheEverything()
+    shards: 'auto'
 });
 
 const distube = new DisTube.DisTube(client, {
