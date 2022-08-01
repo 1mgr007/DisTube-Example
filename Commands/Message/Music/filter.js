@@ -9,7 +9,7 @@ module.exports = {
     usage: [ "<3d, bassboost, echo, karaoke, nightcore, vaporwave>", "off" ],
     examples: [ "bassboost", "off" ],
     memberPermissions: [],
-    botPermissions: [ "SEND_MESSAGES" ],
+    botPermissions: [ "SendMessages" ],
     owner: false,
     async execute(client, message, args) {
         const memberVC = message.member.voice.channel;

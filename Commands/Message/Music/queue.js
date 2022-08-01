@@ -10,7 +10,7 @@ module.exports = {
     usage: [],
     examples: [],
     memberPermissions: [],
-    botPermissions: [ "SEND_MESSAGES" ],
+    botPermissions: [ "SendMessages" ],
     owner: false,
     async execute(client, message, args) {
         const queue = message.client.distube.getQueue(message);

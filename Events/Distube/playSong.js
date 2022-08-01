@@ -72,33 +72,43 @@ async function playButton(queue, duration, embed, song) {
 
         let embeds = new EmbedBuilder()
             .setColor(i.client.color)
-            .setFooter(`Request by ${i.user.tag}`, i.user.displayAvatarURL());
+            .setFooter({ text: `Request by ${i.user.tag}`, iconURL: i.user.displayAvatarURL() });
         
         if (i.customId === 'pauseId') {
             if (queue.paused) { 
                 i.client.distube.resume(i.message);
-                embeds.setDescription(`${i.client.emoji.resume} **Resume** a song.`);
+                embeds.setDescription(`${i.client.emoji.resume} | **Resume** a song.`);
                 i.reply({ embeds: [embeds] });
             } else {
                 i.client.distube.pause(i.message);
-                embeds.setDescription(`${i.client.emoji.pause} **Pause** a song.`);
+                embeds.setDescription(`${i.client.emoji.pause} | **Pause** a song.`);
                 i.reply({ embeds: [embeds] });
             }
         } else if (i.customId === 'skipId') {
-            if (queue.songs.length === 1) {
-                i.client.distube.stop(i.message);
-                embeds.setDescription(`${i.client.emoji.skip} **Skip** a song.`);
+            i.client.distube.skip(i.message)
+            .then(song => {
+                embeds.setDescription(`${i.client.emoji.skip} | **Skip** a song.`);
                 i.reply({ embeds: [embeds] });
                 i.message.delete();
-            } else {
-                i.client.distube.skip(i.message);
-                embeds.setDescription(`${i.client.emoji.skip} **Skip** a song.`);
-                i.reply({ embeds: [embeds] });
-                i.message.delete();
-            }
+            })
+            .catch(error => {
+                if (error.code === "NO_UP_NEXT") {
+                    i.client.distube.stop(i.message)
+                    .then(song => {
+                        embeds.setDescription(`${i.client.emoji.skip} | **Skip** a song.`);
+                        i.reply({ embeds: [embeds] });
+                        i.message.delete();
+                    })
+                    .catch(error => {
+                        return i.reply(`${i.client.emoji.error} | An error occurred while skip the song.`); 
+                    });
+                } else {
+                    return i.reply(`${i.client.emoji.error} | An error occurred while skip the queue.`); 
+                }
+            });
         } else if (i.customId === 'stopId') {
             i.client.distube.stop(i.message);
-            embeds.setDescription(`${i.client.emoji.stop} **Stopped** the music.`);
+            embeds.setDescription(`${i.client.emoji.stop} | **Stopped** the music.`);
             i.reply({ embeds: [embeds] });
             i.message.delete();
         } else if (i.customId === 'queueId') {
@@ -107,7 +117,8 @@ async function playButton(queue, duration, embed, song) {
             const embed = new EmbedBuilder()
                 .setColor("BLACK")
                 .setTitle(`${i.client.emoji.queue} Queue:`)
-                .setFooter(`Request by ${i.user.tag} • ${i.client.music.status(queue)}`,i.user.displayAvatarURL());
+                .setFooter({ text: `Request by ${i.user.tag} • ${i.client.footer.status(queue)}`, iconURL: i.user.displayAvatarURL() });
+                
 
             const footer = "songs";
             const timeout = 120000;
@@ -159,7 +170,8 @@ async function button(i, arrays, embed, footer, timeout) {
 
     const collector = embedMessage.createMessageComponentCollector({ 
         filter: ({user}) => user.id === i.user.id, 
-        time: timeout
+        time: timeout,
+        componentType: 2
     });
 
     let currentIndex = 0;

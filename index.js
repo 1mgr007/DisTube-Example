@@ -1,5 +1,5 @@
 // Module Imports
-const { Client, Partials, IntentsBitField, Options } = require("discord.js");
+const { Client, Partials, IntentsBitField } = require("discord.js");
 const { readdirSync } = require("fs");
 const config = require("./config.json");
 const DisTube = require('distube');
@@ -22,6 +22,7 @@ const distube = new DisTube.DisTube(client, {
 	leaveOnFinish: false,
 	leaveOnStop: false,
 	nsfw: true,
+    savePreviousSongs: true,
 	plugins: [
         new SpotifyPlugin({ 
             parallel: true, 
@@ -41,7 +42,10 @@ const distube = new DisTube.DisTube(client, {
     },
     emitAddListWhenCreatingQueue: true,
     emitAddSongWhenCreatingQueue: false,
-    emitNewSongOnly: true
+    emitNewSongOnly: true,
+    joinNewVoiceChannel: true,
+    streamType: 0,
+    directLink: true
 });
 
 client.distube = distube;
@@ -77,4 +81,4 @@ client.on('warn', info => console.log(info));
 process.on('unhandledRejection', error => console.log(error));
 process.on('uncaughtException', error => console.log(error));
 
-client.login(config.Token);
+client.login(process.env.Token);

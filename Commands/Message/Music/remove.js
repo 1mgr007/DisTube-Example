@@ -10,7 +10,7 @@ module.exports = {
     usage: [ "{song position}" ],
     examples: [ "2" ],
     memberPermissions: [],
-    botPermissions: [ "SEND_MESSAGES" ],
+    botPermissions: [ "SendMessages" ],
     owner: false,
     async execute(client, message, args) {
         const memberVC = message.member.voice.channel;
