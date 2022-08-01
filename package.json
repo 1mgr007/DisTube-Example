@@ -1,6 +1,6 @@
 {
 	"name": "distubeexample",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "This is a simple Distube example music bot.",
 	"main": "index.js",
 	"scripts": {
