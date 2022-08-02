@@ -24,15 +24,17 @@ module.exports = {
         let embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setAuthor({ name: `${message.client.emoji.queue} Queue` })
-            .addField(`${message.client.emoji.music} Now Playing`, `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
+            .addFields({ name: `${message.client.emoji.music} Now Playing`, value: `[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\`` })
             .setFooter({ text: `Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, iconURL: message.author.displayAvatarURL() });
 
         if (arrays.length === 0) {
             embed.setDescription(`\`No song in queue\``);
             message.channel.send({ embeds: [embed] });
         } else {
-            embed.addField("Total Song", `${arrays.length} Songs`);
-            embed.addField("Total Duration", `${queue.formattedDuration}`);
+            embed.addFields([
+                { name: "Total Song", value: `${arrays.length} Songs` },
+                { name: "Total Duration", value: `${queue.formattedDuration}` }
+            ]);
             message.client.pagination.button(message, arrays, embed)
         }
     }

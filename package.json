@@ -1,10 +1,10 @@
 {
 	"name": "distubeexample",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "This is a simple Distube example music bot.",
 	"main": "index.js",
 	"scripts": {
-		"start": "node --optimize_for_size --max_old_space_size=460 index.js",
+		"start": "node index.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "1mgr007",

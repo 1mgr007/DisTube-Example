@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-const { MessageActionRow, MessageButton } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder } = require("discord.js");
 
 module.exports = {
-    button: async function (message, arrays, embed, timeout = 120000) {
+    button: async function (message, arrays, embed, timeout = 60000) {
 
         const backId = "back";
         const forwardId = "forward";
-        const backButton = new MessageButton()
+        const backButton = new ButtonBuilder()
             .setStyle("Secondary")
             .setLabel("Back")
             .setEmoji("⏪")
             .setCustomId(backId);
-        const forwardButton = new MessageButton()
+        const forwardButton = new ButtonBuilder()
             .setStyle("Secondary")
             .setLabel("Forward")
             .setEmoji("⏩")
@@ -28,7 +28,7 @@ module.exports = {
 
         const canFitOnOnePage = array.length <= 10;
 
-        const row1 = new MessageActionRow().addComponents([forwardButton]);
+        const row1 = new ActionRowBuilder().addComponents([forwardButton]);
 
         const embeds = await generateEmbed(0);
 
@@ -52,19 +52,20 @@ module.exports = {
                 ? (currentIndex -= 10)
                 : (currentIndex += 10);
 
-            const row2 = new MessageActionRow().addComponents([
+            const row2 = new ActionRowBuilder().addComponents([
                 ...(currentIndex ? [backButton] : []),
                 ...(currentIndex + 10 < array.length ? [forwardButton] : []),
             ]);
 
             const embed = await generateEmbed(currentIndex);
 
-            await interaction.update({
+            interaction.update({
                 embeds: [embed],
                 components: [row2],
+            }).catch(error => {
+                if (error.code !== 10062) return console.error(error);
             });
         });
-        // eslint-disable-next-line no-unused-vars
         collector.on("end", (collected) => {
             embedMessage.edit({ components: [] });
         });

@@ -6,7 +6,7 @@ module.exports = async (client, queue, playlist) => {
         .setColor(client.color)
         .setDescription(`${client.emoji.playlist} | Add Playlist \n[${playlist.name}](${playlist.url}) \nTotal : (${playlist.songs.length} songs) \`[${playlist.formattedDuration}]\``)
         .setThumbnail(playlist.thumbnail.url)
-        .setFooter(`Request by ${playlist.user.tag}`, playlist.user.displayAvatarURL());
+        .setFooter({ text: `Request by ${playlist.user.tag}`, iconURL: playlist.user.displayAvatarURL() });
     queue.textChannel.send({ embeds: [embed] });
 
 }

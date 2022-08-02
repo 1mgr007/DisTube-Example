@@ -18,7 +18,7 @@ module.exports = {
             .setColor(message.client.color)
             .setAuthor({ name: message.client.user.username, iconURL: message.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 2048 }) })
             .setThumbnail(message.client.user.displayAvatarURL())
-            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL());
+            .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() });
 
         if (!args[0]) {
             const commands = (category) => {
@@ -69,7 +69,7 @@ module.exports = {
 
             embed.setTitle(`${message.client.prefix}${name}`)
             embed.setDescription(`\`\`\`${description}\`\`\``)
-            embed.addFields([ 
+            embed.setFields([ 
                 { name: `Usage`, value: `${usage}` }, 
                 { name: `Examples`, value: `${example}` }, 
                 { name: `Aliases`, value: `__***${aliases}***__` }, 

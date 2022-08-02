@@ -22,7 +22,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor(message.client.color)
             .setThumbnail(message.client.user.displayAvatarURL())
-            .setFooter(`Request by: ${message.author.tag}`, message.author.displayAvatarURL())
+            .setFooter({ text: `Request by ${message.author.tag}`, iconURL: message.author.displayAvatarURL() })
             .setTitle(`${message.client.emoji.info} Status`)
             .setDescription(`**= STATISTICS =**
 **• Servers** : ${message.client.guilds.cache.size.toLocaleString()}
