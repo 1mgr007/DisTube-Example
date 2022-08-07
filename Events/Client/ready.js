@@ -1,3 +1,5 @@
+const { ActivityType } = require("discord.js");
+
 module.exports = async (client) => {
     await client.guilds.cache.each(async guild => {
         await guild.members.fetch({ withPresences: true, force: true });
@@ -11,7 +13,7 @@ module.exports = async (client) => {
     let statuses = [`Prefix : ${client.prefix}`];
     setInterval(function() {
         let status = statuses[Math.floor(Math.random()*statuses.length)];
-        client.user.setActivity(status, {type: "PLAYING"});
+        client.user.setActivity(status, { type: ActivityType.Playing });
     }, 10000)
 
 }
