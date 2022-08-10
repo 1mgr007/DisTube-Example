@@ -40,7 +40,7 @@
 		"eslint": "^8.21.0"
 	},
 	"engines": {
-		"node": ">=16.9.0"
+		"node": "17.*"
 	},
 	"eslintConfig": {
 		"extends": "eslint:recommended",
