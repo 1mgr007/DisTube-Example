@@ -30,8 +30,10 @@ module.exports = {
             .setDescription(`[${currentSong.name}](${currentSong.url}) - \`[${currentSong.formattedDuration}]\``)
             .setThumbnail(currentSong.thumbnail)
             .setColor(message.client.color)
-            .addField("\u200b", message.client.progressbar.progressbar(total, current, size, line, slider))
-            .addField("\u200b", `\`${message.client.convert.convertTime(current)} / ${message.client.convert.convertTime(total)}\``)
+			.addFields(
+				{ name: "\u200b", value: message.client.progressbar.progressbar(total, current, size, line, slider) },
+				{ name: "\u200b", value: `\`${message.client.convert.convertTime(current)} / ${message.client.convert.convertTime(total)}\`` }
+			)
             .setFooter({ text: `Request by ${message.author.tag} • ${message.client.footer.status(queue)}`, iconURL: message.author.displayAvatarURL() });
         message.channel.send({ embeds: [embed] });
 
