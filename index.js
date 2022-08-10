@@ -14,6 +14,38 @@ const client = new Client({
     shards: 'auto'
 });
 
+let plugins;
+if (config.clientId && config.clientSecret) {
+    plugins = [
+        new SpotifyPlugin({ 
+            parallel: true, 
+            emitEventsAfterFetching: true,
+            api: { clientId: config.clientId, clientSecret: config.clientSecret }
+        }),
+        new SoundCloudPlugin(),
+        new YtDlpPlugin({ update: true })
+    ]
+} else {
+    plugins = [
+        new SoundCloudPlugin(),
+        new YtDlpPlugin({ update: true })
+    ]
+}
+
+let youtubeCookie;
+if (config.youtubeCookie) {
+    youtubeCookie = config.youtubeCookie;
+} else {
+    youtubeCookie = 'none';
+}
+
+let musicimg = "https://cdn.jsdelivr.net/gh/skick1234/MaBu-CDN@4.8.4/DisTube/img/banner.png";
+if (config.MusicImg) {
+    client.musicimg = config.MusicImg;
+} else {
+    client.musicimg = musicimg;
+}
+
 const distube = new DisTube.DisTube(client, {
 	searchSongs: 0,
 	searchCooldown: 30,
@@ -23,16 +55,8 @@ const distube = new DisTube.DisTube(client, {
 	leaveOnStop: false,
 	nsfw: true,
     savePreviousSongs: true,
-	plugins: [
-        new SpotifyPlugin({ 
-            parallel: true, 
-            emitEventsAfterFetching: true,
-            api: { clientId: config.clientId, clientSecret: config.clientSecret }
-        }),
-        new SoundCloudPlugin(),
-        new YtDlpPlugin({ update: true })
-    ],
-    youtubeCookie: config.youtubeCookie,
+	plugins: plugins,
+    youtubeCookie: youtubeCookie,
     ytdlOptions: {
         highWaterMark: 1024 * 1024 * 64,
         quality: "highestaudio",
@@ -52,10 +76,6 @@ client.distube = distube;
 client.prefix = config.Prefix;
 client.owner = config.OwnerId;
 client.color = config.Color;
-
-const musicimg = "https://cdn.jsdelivr.net/gh/skick1234/MaBu-CDN@4.8.4/DisTube/img/banner.png";
-if (!config.MusicImg) client.musicimg = musicimg;
-client.musicimg = config.MusicImg;
 
 client.logger = require('./Utils/logger');
 

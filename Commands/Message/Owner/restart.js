@@ -6,7 +6,7 @@ module.exports = {
     category: "owner",
     aliases: [],
     description: "",
-    args: true,
+    args: false,
     usage: [],
     examples: [],
     memberPermissions: [],
