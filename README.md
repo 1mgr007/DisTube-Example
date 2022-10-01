@@ -51,6 +51,8 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 - [Azure](https://azure.microsoft.com/account/free) - Free Trial with a $200 credit for 30 days.
 - [DigitalOcean](https://www.digitalocean.com/try/free-trial-offer) - Free Trial with a $100 credit for 60 days.
 - [Google Cloud](https://cloud.google.com/free-trial/90daysfreetrial) - Free Trial with a $300 credit for 90 days.
+- [AWS](https://aws.amazon.com/free/) - Free Tier Amazon EC2 750 hours per month for 12 months.
+- [Alibaba Cloud](https://www.alibabacloud.com/free) - Free Trial ECS for 3 months or 12 months.
 
 ### For Help
 
