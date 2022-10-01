@@ -50,6 +50,7 @@ Please edit the `./config.json` and `./Events/Client/ready.js` file first.
 - [Glitch](https://glitch.com/)
 - [Azure](https://azure.microsoft.com/account/free) - Free Trial with a $200 credit for 30 days.
 - [DigitalOcean](https://www.digitalocean.com/try/free-trial-offer) - Free Trial with a $100 credit for 60 days.
+- [Google Cloud](https://cloud.google.com/free-trial/90daysfreetrial) - Free Trial with a $300 credit for 90 days.
 
 ### For Help
 
